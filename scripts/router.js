@@ -1,13 +1,17 @@
-import aformView from './views/aformview';
+import AformView from './views/aformview';
 
 var Router = Backbone.Router.extend({
 	routes: {
 		'': 'aform'
 	},
 	
-	aform: function(){
-		var view = new aformView({});
-		$('#app').html(view.el);
-	}
+	initialize: function(){
+		this.aformView = new AformView();
+		$('#app').html(this.aformView.el);
+	},
 	
 });
+
+var router = new Router();
+
+export default router;
