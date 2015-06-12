@@ -1,7 +1,6 @@
 import AformView from './views/aformview';
-//import AformModel from './models/aformmodel';
-//
-//import {aformCollection} from './models/aformmodel';
+
+import {AformCollection} from './models/aformmodel';
 
 var Router = Backbone.Router.extend({
 	routes: {
@@ -9,8 +8,12 @@ var Router = Backbone.Router.extend({
 	},
 	
 	initialize: function(){
-		this.aformView = new AformView();
-		$('#app').html(this.aformView.el);
+		 var aformCollection = new AformCollection();
+		this.aformView = new AformView({collection: aformCollection});
+	},
+	
+	aform: function() {
+		$('#app').html(this.aformView.el);	
 	},
 	
 });

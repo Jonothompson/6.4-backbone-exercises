@@ -9,7 +9,11 @@ export default Backbone.View.extend({
 		e.preventDefault();
 		var title = this.$('.titleForm').val();
 		var body = this.$('.bodyForm').val();
-		console.log(title, body)
+		this.collection.create({
+			title: title,
+			body: body,
+		}),
+		console.log(title, body);
 	},
 	
 	initialize: function(){
@@ -20,5 +24,7 @@ export default Backbone.View.extend({
 	render: function(){
 		this.$el.html(this.template());
 	},
+	
+	
 	
 });
