@@ -1,16 +1,34 @@
+//
+//Import Views
+//
+
 import IndexView from './views/index';
 import AformView from './views/aformview';
 import BFormView from './views/bPeopleView';
+import CPostView from './views/cPostView';
 
+//
+//Import Collections
+//
 
 import {AformCollection} from './models/aformmodel';
+
+//
+//Import Models
+//
+
 import {BPeopleCollection} from './models/bPeopleForm';
+
+//
+//
+//
 
 var Router = Backbone.Router.extend({
 	routes: {
 		'': 'index',
 		'a': 'aform',
-		'b': 'bPeopleForm'
+		'b': 'bPeopleForm',
+		'c': 'cPosts',
 	},
 	
 	initialize: function(){
@@ -35,6 +53,16 @@ var Router = Backbone.Router.extend({
 		console.log('bPeopleForm');
 		$('#app').html(bPeopleForm.el);
 	},
+	
+	cPosts: function() {
+		var aformCollection = new AformCollection();
+		var cPostView = new CPostView({collection: aformCollection});
+		aformCollection.fetch();
+		console.log('cPostView', aformCollection);
+		$('#app').html(cPostView.el);
+	},
+	
+	
 	
 });
 
