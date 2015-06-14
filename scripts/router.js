@@ -10,14 +10,14 @@ import CPostView from './views/cPostView';
 //
 //Import Collections
 //
-
+import {BPeopleCollection} from './models/bPeopleForm';
 import {AformCollection} from './models/aformmodel';
 
 //
 //Import Models
 //
 
-import {BPeopleCollection} from './models/bPeopleForm';
+import {AformModel} from './models/aformmodel';
 
 //
 //
@@ -62,7 +62,25 @@ var Router = Backbone.Router.extend({
 		$('#app').html(cPostView.el);
 	},
 	
+	cPostView: function(_id){
+		var aformCollection = new AformCollection();
+		aformCollection.fetch().then(function(){
+		var post = aformCollection.get(_id);
+		}.bind(this));
+			
+	},
 	
+//	
+// helper function
+//
+	
+	
+	showPostView: function(view) {
+		if(this.currentView) this.currentView.remove();
+		this.currentView = view;
+		$('#app').html(view.el);
+		return view;
+	},
 	
 });
 

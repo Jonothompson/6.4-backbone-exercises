@@ -11,11 +11,16 @@ export default Backbone.View.extend({
 	},
 	
 	render: function(){
-		this.$el.html(this.template(this.collection.toJSON()));
+		this.$el.html(this.template);
 	},
 	
-	posts: function(){
-		console.log('posting?');
-	},
+//	togglePost: function(e){
+//		e && e.preventDefault();
+//		this.model.set('isHidden', !this.model.get('isHidden'));
+//	},
+	
+//	posts: function(){
+//		console.log('posting?');
+//	},
 	
 });

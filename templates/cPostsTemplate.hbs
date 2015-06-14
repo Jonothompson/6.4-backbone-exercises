@@ -5,7 +5,7 @@
   </a>
   {{/each}}
 </ul>
-<div class="blogPost" {{#if isHidden}}true{{/if}}>
+<div class="blogPost" {{#unless isHidden}}true{{/if}}>
   <h1 class="blogPostTitle">{{title}}</h1>
   <p class="blogPost">{{post}}</p>
 </div>
