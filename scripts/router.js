@@ -6,18 +6,21 @@ import IndexView from './views/index';
 import AformView from './views/aformview';
 import BFormView from './views/bPeopleView';
 import CPostView from './views/cPostView';
+import CPostShow from './views/cPostShow';
 
 //
 //Import Collections
 //
-import {BPeopleCollection} from './models/bPeopleForm';
+
 import {AformCollection} from './models/aformmodel';
+import {BPeopleCollection} from './models/bPeopleForm';
 
 //
 //Import Models
 //
 
 import {AformModel} from './models/aformmodel';
+import {bPeopleModel} from './models/bPeopleForm';
 
 //
 //
@@ -29,6 +32,7 @@ var Router = Backbone.Router.extend({
 		'a': 'aform',
 		'b': 'bPeopleForm',
 		'c': 'cPosts',
+		'cPost': 'Post',
 	},
 	
 	initialize: function(){
@@ -58,29 +62,29 @@ var Router = Backbone.Router.extend({
 		var aformCollection = new AformCollection();
 		var cPostView = new CPostView({collection: aformCollection});
 		aformCollection.fetch();
-		console.log('cPostView', aformCollection);
 		$('#app').html(cPostView.el);
+		console.log('cPostView', aformCollection);
 	},
 	
-	cPostView: function(_id){
-		var aformCollection = new AformCollection();
-		aformCollection.fetch().then(function(){
-		var post = aformCollection.get(_id);
-		}.bind(this));
-			
-	},
+//	cPostView: function(_id){
+//		var aformCollection = new AformCollection();
+//		aformCollection.fetch().then(function(){
+//		var post = aformCollection.get(_id);
+//		}.bind(this));
+//			
+//	},
 	
 //	
 // helper function
 //
 	
 	
-	showPostView: function(view) {
-		if(this.currentView) this.currentView.remove();
-		this.currentView = view;
-		$('#app').html(view.el);
-		return view;
-	},
+//	showPostView: function(view) {
+//		if(this.currentView) this.currentView.remove();
+//		this.currentView = view;
+//		$('#app').html(view.el);
+//		return view;
+//	},
 	
 });
 
