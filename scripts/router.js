@@ -6,6 +6,7 @@ import IndexView from './views/index';
 import AformView from './views/aformview';
 import BFormView from './views/bPeopleView';
 import CPostView from './views/cPostView';
+import ShowView from './views/ShowView';
 
 //
 //Import Collections
@@ -29,9 +30,11 @@ var Router = Backbone.Router.extend({
 		'a': 'aform',
 		'b': 'bPeopleForm',
 		'c': 'cPosts',
+		'c/:id': 'postShow'
 	},
 	
 	initialize: function(){
+		this.posts = new AformCollection();
 	},
 	
 	index: function() {
@@ -41,8 +44,8 @@ var Router = Backbone.Router.extend({
 	},
 	
 	aform: function() {
-		var aformCollection = new AformCollection();
-		var aformView = new AformView({collection: aformCollection});		
+
+		var aformView = new AformView({collection: this.posts});		
 		console.log('aForm');
 		$('#app').html(aformView.el);	
 	},
@@ -61,6 +64,15 @@ var Router = Backbone.Router.extend({
 		console.log('cPostView', aformCollection);
 		$('#app').html(cPostView.el);
 	},
+	
+	postShow: function(id) {
+		this.posts.fetch().then(function(){
+			var post = this.posts.get(id);
+			console.log(post);
+			var show = new ShowView({model: post});
+			$('#app').html(show.el);
+		}.bind(this));
+	}
 	
 	
 	
