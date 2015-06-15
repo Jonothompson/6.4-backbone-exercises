@@ -1,0 +1,11 @@
+<ul class="cBlogPosts">
+  {{#each this}}
+  <a href="#c/{{_id}}" class="blogPostLink">
+    <li class="blogPostTitles">{{title}}</li>
+  </a>
+  {{/each}}
+</ul>
+<div class="blogPost" {{#unless isHidden}}true{{/if}}>
+  <h1 class="blogPostTitle">{{title}}</h1>
+  <p class="blogPost">{{post}}</p>
+</div>
