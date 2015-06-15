@@ -11,13 +11,13 @@ import CPostView from './views/cPostView';
 //Import Collections
 //
 
-import {AformCollection} from './models/aformmodel';
+import {BPeopleCollection} from './models/bPeopleForm';
 
 //
 //Import Models
 //
 
-import {BPeopleCollection} from './models/bPeopleForm';
+import {AformCollection} from './models/aformmodel';
 
 //
 //
