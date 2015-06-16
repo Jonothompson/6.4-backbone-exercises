@@ -5,7 +5,7 @@ var AformModel = Backbone.Model.extend({
 		title: '',
 		body: '',
 		created_at: new Date()
-		}
+		};
 	},
 });
 

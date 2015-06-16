@@ -7,18 +7,22 @@ import AformView from './views/aformview';
 import BFormView from './views/bPeopleView';
 import CPostView from './views/cPostView';
 import ShowView from './views/ShowView';
+import BookmarkView from './views/bookmarkView';
+import BookmarkShow from './views/bookmarkShow';
 
 //
 //Import Collections
 //
 
 import {BPeopleCollection} from './models/bPeopleForm';
+import {BookmarkCollection} from './models/bookmarkModel';
 
 //
 //Import Models
 //
 
 import {AformCollection} from './models/aformmodel';
+import {bookmarkModel} from './models/bookmarkModel';
 
 //
 //
@@ -30,11 +34,13 @@ var Router = Backbone.Router.extend({
 		'a': 'aform',
 		'b': 'bPeopleForm',
 		'c': 'cPosts',
-		'c/:id': 'postShow'
+		'c/:id': 'postShow',
+		'd': 'bookmarks'
 	},
 	
 	initialize: function(){
 		this.posts = new AformCollection();
+		this.bookmarkshow = new BookmarkCollection();
 	},
 	
 	index: function() {
@@ -72,10 +78,25 @@ var Router = Backbone.Router.extend({
 			var show = new ShowView({model: post});
 			$('#app').html(show.el);
 		}.bind(this));
+	},
+	
+	bookmarks: function() {
+		var bookmarkCollection = new BookmarkCollection();
+		var bookmarkView = new BookmarkView({collection: bookmarkCollection});
+		bookmarkCollection.fetch();		
+		$('#app').html(bookmarkView.el);
+	},
+	
+	bookmarkShow: function(id) {
+		this.bookmarkpost.fetch().then(function(){
+			var bookmarkpost = this.bookmarkpost.get(id);
+			console.log(bookmarkpost);
+			var bookmark = new BookmarkShow({model: bookmarkpost});
+			$('#app').html(bookmark.el)
+		}.bind(this));
 	}
 	
-	
-	
+		
 });
 
 var router = new Router();

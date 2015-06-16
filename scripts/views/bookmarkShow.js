@@ -1,5 +1,5 @@
 export default Backbone.View.extend({
-	template: JST.ShowViewTemplate,
+	template: JST.bookmarkShow,
 	
 	initialize: function (){
 		this.render();

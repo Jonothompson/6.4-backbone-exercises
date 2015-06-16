@@ -1,0 +1,21 @@
+
+<form class="Bookmark-form">
+	<input class="Bookmark-Title-Form" type="text" placeholder="Title">
+	<input class="Bookmark-URL-Form" type="text"	placeholder="URL">
+	<input class="Bookmark-tag-form" type="text"	placeholder="Tags">
+	<input type="submit" value="Post" class="submit">
+</form>
+
+<ul class="bookmarks">
+  {{#each this}}
+  <a href="#d/{{_id}}" class="bookmarkLinks">
+    <li class="bookmarkTitles">{{title}}</li>
+    <p class="tags">{{tag}}</p>
+  </a>
+  {{/each}}
+</ul>
+<div class="bookmark" {{#if isHidden}}true{{/if}}>
+  <h1 class="bookmarkTitle">{{title}}</h1>
+   <h3 class="bookmarkUrl">{{url}}</h3>
+  <p class="tag">{{tag}}</p>
+</div>
